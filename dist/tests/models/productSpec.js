@@ -13,9 +13,9 @@ const product_1 = require("../../models/product");
 const store = new product_1.ProductStore();
 describe('Product Model Spec', () => {
     const product = {
-        name: "Led Lamp",
+        name: 'Led Lamp',
         price: 50,
-        category: "Lightning"
+        category: 'Lightning'
     };
     it('Should have an index method', () => {
         expect(store.index).toBeDefined();

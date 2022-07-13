@@ -17,17 +17,17 @@ const app_1 = __importDefault(require("../../app"));
 const user_1 = require("../../models/user");
 const auth_1 = require("../../utils/auth");
 const req = (0, supertest_1.default)(app_1.default);
-describe("User Handler Spec", () => {
+describe('User Handler Spec', () => {
     //@ts-ignore
     let result;
     //@ts-ignore
     let token;
     const userStore = new user_1.UserStore();
     const user = {
-        userName: "userName",
-        firstName: "user",
-        lastName: "name",
-        password: "password123"
+        userName: 'userName',
+        firstName: 'user',
+        lastName: 'name',
+        password: 'password123'
     };
     beforeAll(() => __awaiter(void 0, void 0, void 0, function* () {
         result = yield userStore.create(user);
@@ -36,27 +36,25 @@ describe("User Handler Spec", () => {
     afterAll(() => __awaiter(void 0, void 0, void 0, function* () {
         result = yield userStore.delete(user.userName, user.password);
     }));
-    it("[GET] /users Should require a JWT", (done) => {
-        req
-            .get("/users")
-            .then((res) => {
+    it('[GET] /users Should require a JWT', (done) => {
+        req.get('/users').then((res) => {
             expect(res.status).toBe(401);
             done();
         });
     });
     //@ts-ignore
-    it("[GET] /users/1 Should require a JWT", (done) => {
+    it('[GET] /users/1 Should require a JWT', (done) => {
         req
             //@ts-ignore
-            .get("/users/1")
+            .get('/users/1')
             .then((res) => {
             expect(res.status).toBe(401);
             done();
         });
     });
-    it("[Delete] /users Should require a JWT", (done) => {
+    it('[Delete] /users Should require a JWT', (done) => {
         req
-            .delete("/users")
+            .delete('/users')
             .query({
             userName: user.userName,
             password: user.password
@@ -66,11 +64,11 @@ describe("User Handler Spec", () => {
             done();
         });
     });
-    it("[GET] /users Should get the index route", (done) => {
+    it('[GET] /users Should get the index route', (done) => {
         req
-            .get("/users")
+            .get('/users')
             //@ts-ignore
-            .set("Authorization", "bearer " + token)
+            .set('Authorization', 'bearer ' + token)
             .then((res) => {
             expect(res.status).toBe(200);
             done();

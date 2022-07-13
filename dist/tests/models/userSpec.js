@@ -13,10 +13,10 @@ const user_1 = require("../../models/user");
 const store = new user_1.UserStore();
 describe('User Model Spec', () => {
     const user = {
-        userName: "testUser",
-        firstName: "test",
-        lastName: "user",
-        password: "test123"
+        userName: 'testUser',
+        firstName: 'test',
+        lastName: 'user',
+        password: 'test123'
     };
     it('Should have an index method', () => {
         expect(store.index).toBeDefined();

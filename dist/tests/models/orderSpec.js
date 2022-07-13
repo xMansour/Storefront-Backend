@@ -5,7 +5,7 @@ const store = new order_1.OrderStore();
 describe('Order Model Spec', () => {
     const order = {
         userId: 1,
-        status: "Open",
+        status: 'Open'
     };
     it('Should have an index method', () => {
         expect(store.index).toBeDefined();
