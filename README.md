@@ -47,6 +47,23 @@ NODE_ENV = dev
 SALT_ROUNDS = 10
 TOKEN_PRIVATE_KEY = x@AxcvS5569@gafd$`
 
+then add a database.json file in the root directory and set the missing paramters
 
+`{
+    "dev": {
+      "driver": "pg",
+      "host": "127.0.0.1",
+      "database": "store_front_backend",
+      "user": "?????",
+      "password": "?????"
+    },
+    "test": {
+        "driver": "pg",
+        "host": "127.0.0.1",
+        "database": "store_front_backend_test",
+        "user": "?????",
+        "password": "?????"
+      }
+  }`
 
-
+- To start the server at http://127.0.0.1:3000: `npm run start`
