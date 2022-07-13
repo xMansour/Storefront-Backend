@@ -34,6 +34,7 @@ This is the second project for Udacity's advanced web nanodegree.
   - To use jasmine and supertest for testing: `npm run test`
   - To start the server at http://127.0.0.1:3000: `npm run start`
   
+  
 ## Usage <a id='usage'></a>
 First of all add a `.env` File in the root directory and set the missing parameters
 
@@ -48,7 +49,8 @@ SALT_ROUNDS = 10
 TOKEN_PRIVATE_KEY = x@AxcvS5569@gafd$
 ```
 
-Then add a database.json file in the root directory and set the missing paramters
+Then add a database.json file in the root directory and set the missing paramters  
+The Database runs at the default port: `5432`. If you want to change it, you can add a `"port"` key in the database.json file below and give it the prefered value but not `3000` since it it used for the server.
 
 ```
 {

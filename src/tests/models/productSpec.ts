@@ -29,7 +29,9 @@ describe('Product Model Spec', () => {
   });
 
   it('show method should return the correct product', async () => {
-    const result = await store.show(1);
+    const createdProduct = await store.create(product);
+    //@ts-ignore
+    const result = await store.show(createdProduct.id);
     expect(result.name).toBe(product.name);
     expect(result.price).toBe(product.price);
     expect(result.category).toBe(product.category);

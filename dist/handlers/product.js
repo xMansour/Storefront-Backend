@@ -18,24 +18,42 @@ const auth_1 = require("../utils/auth");
 const productRouter = express_1.default.Router();
 const productStore = new product_1.ProductStore();
 const index = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const result = yield productStore.index();
-    res.json(result);
-    console.log('Product Index Route');
+    try {
+        const result = yield productStore.index();
+        res.json(result);
+        console.log('Product Index Route');
+    }
+    catch (error) {
+        res.status(400);
+        throw new Error(`Product Index Route Error: ${error}`);
+    }
 });
 const create = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const product = {
-        name: String(req.query.name),
-        price: Number(req.query.price),
-        category: String(req.query.category)
-    };
-    const result = yield productStore.create(product);
-    res.json(result);
-    console.log('Product Create Route');
+    try {
+        const product = {
+            name: String(req.query.name),
+            price: Number(req.query.price),
+            category: String(req.query.category)
+        };
+        const result = yield productStore.create(product);
+        res.json(result);
+        console.log('Product Create Route');
+    }
+    catch (error) {
+        res.status(400);
+        throw new Error(`Product Create Route Error: ${error}`);
+    }
 });
 const show = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const result = yield productStore.show(Number(req.params.id));
-    res.json(result);
-    console.log('Product Show Route');
+    try {
+        const result = yield productStore.show(Number(req.params.id));
+        res.json(result);
+        console.log('Product Show Route');
+    }
+    catch (error) {
+        res.status(400);
+        throw new Error(`Product Show Route Error: ${error}`);
+    }
 });
 productRouter.get('/products', index);
 productRouter.post('/products', auth_1.verifyAuthToken, create);

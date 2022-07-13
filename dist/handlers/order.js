@@ -18,36 +18,54 @@ const auth_1 = require("../utils/auth");
 const orderRouter = express_1.default.Router();
 const orderStore = new order_1.OrderStore();
 const index = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const result = yield orderStore.index();
-    res.json(result);
-    console.log('Order Index Route');
+    try {
+        const result = yield orderStore.index();
+        res.json(result);
+        console.log('Order Index Route');
+    }
+    catch (error) {
+        res.status(400);
+        throw new Error(`Order Index Route Error: ${error}`);
+    }
 });
 const show = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const result = yield orderStore.show(Number(req.params.userId));
-    res.json(result);
-    console.log('Order Show Route');
+    try {
+        const result = yield orderStore.show(Number(req.params.userId));
+        res.json(result);
+        console.log('Order Show Route');
+    }
+    catch (error) {
+        res.status(400);
+        throw new Error(`Order Show Route Error: ${error}`);
+    }
 });
 const create = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const order = {
-        userId: Number(req.params.userId),
-        status: 'Open'
-    };
-    const result = yield orderStore.create(order);
-    res.json(result);
-    console.log('Order Create Route');
+    try {
+        const order = {
+            userId: Number(req.params.userId),
+            status: 'Open'
+        };
+        const result = yield orderStore.create(order);
+        res.json(result);
+        console.log('Order Create Route');
+    }
+    catch (error) {
+        res.status(400);
+        throw new Error(`Order Create Route Error: ${error}`);
+    }
 });
 const addProduct = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const orderId = req.params.orderId;
-    const productId = req.params.productId;
-    const quantity = Number(req.query.quantity);
     try {
+        const orderId = req.params.orderId;
+        const productId = req.params.productId;
+        const quantity = Number(req.query.quantity);
         const result = yield orderStore.addProduct(quantity, orderId, productId);
         res.json(result);
         console.log('Order addProduct Route');
     }
     catch (error) {
         res.status(400);
-        console.log(`Couldn't add product because of: ${error}`);
+        throw new Error(`Order addProduct Route Error: ${error}`);
     }
 });
 orderRouter.get('/orders', auth_1.verifyAuthToken, index);

@@ -33,7 +33,12 @@ describe('Product Model Spec', () => {
         expect(result.category).toBe(product.category);
     }));
     it('show method should return the correct product', () => __awaiter(void 0, void 0, void 0, function* () {
-        const result = yield store.show(1);
+        const createdProduct = yield store.create(product);
+        //@ts-ignore
+        console.log(createdProduct.id);
+        console.log(createdProduct);
+        //@ts-ignore
+        const result = yield store.show(createdProduct.id);
         expect(result.name).toBe(product.name);
         expect(result.price).toBe(product.price);
         expect(result.category).toBe(product.category);

@@ -21,17 +21,8 @@ class OrderStore {
             try {
                 //@ts-ignore
                 const conn = yield database_1.default.connect();
-                let sql = 'SELECT * FROM orders';
-                let result = yield conn.query(sql);
-                /*const ordersProducts: Order[] = [];
-                      for (const order of result.rows) {
-                          console.log(order);
-                          sql = "SELECT * FROM orders_products WHERE order_id=($1)";
-                          result = await conn.query(sql, [order.id])
-                          if (result.rows[0])
-                              ordersProducts.push(result.rows[0]);
-                      }
-                      return ordersProducts;*/
+                const sql = 'SELECT * FROM orders';
+                const result = yield conn.query(sql);
                 conn.release();
                 return result.rows;
             }
