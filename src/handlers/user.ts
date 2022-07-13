@@ -13,7 +13,6 @@ const index = async (req: express.Request, res: express.Response) => {
     res.status(400);
     throw new Error(`User Index Route Error: ${error}`);
   }
-
 };
 
 const create = async (req: express.Request, res: express.Response) => {
@@ -32,7 +31,6 @@ const create = async (req: express.Request, res: express.Response) => {
     res.status(400);
     throw new Error(`User Create Route Error: ${error}`);
   }
-
 };
 
 const show = async (req: express.Request, res: express.Response) => {
@@ -44,7 +42,6 @@ const show = async (req: express.Request, res: express.Response) => {
     res.status(400);
     throw new Error(`User Show Route Error: ${error}`);
   }
-
 };
 
 const authenticate = async (req: express.Request, res: express.Response) => {
@@ -65,7 +62,6 @@ const authenticate = async (req: express.Request, res: express.Response) => {
     res.status(400);
     throw new Error(`User Authenticate Route Error: ${error}`);
   }
-
 };
 
 const deleteUser = async (req: express.Request, res: express.Response) => {
@@ -80,7 +76,6 @@ const deleteUser = async (req: express.Request, res: express.Response) => {
     res.status(400);
     throw new Error(`User Delete Route Error: ${error}`);
   }
-
 };
 
 userRouter.get('/users', verifyAuthToken, index);

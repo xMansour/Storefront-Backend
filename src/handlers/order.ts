@@ -14,7 +14,6 @@ const index = async (req: express.Request, res: express.Response) => {
     res.status(400);
     throw new Error(`Order Index Route Error: ${error}`);
   }
-
 };
 
 const show = async (req: express.Request, res: express.Response) => {
@@ -26,7 +25,6 @@ const show = async (req: express.Request, res: express.Response) => {
     res.status(400);
     throw new Error(`Order Show Route Error: ${error}`);
   }
-
 };
 
 const create = async (req: express.Request, res: express.Response) => {
@@ -42,7 +40,6 @@ const create = async (req: express.Request, res: express.Response) => {
     res.status(400);
     throw new Error(`Order Create Route Error: ${error}`);
   }
-
 };
 
 const addProduct = async (req: express.Request, res: express.Response) => {

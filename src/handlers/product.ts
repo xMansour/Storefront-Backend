@@ -31,7 +31,6 @@ const create = async (req: express.Request, res: express.Response) => {
     res.status(400);
     throw new Error(`Product Create Route Error: ${error}`);
   }
-
 };
 
 const show = async (req: express.Request, res: express.Response) => {
