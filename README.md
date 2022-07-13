@@ -3,7 +3,6 @@
  2. [Built With](#built-with)
  3. [Scripts](#scripts)
  4. [Usage](#usage)
- 5. [Contact](#contact)
 
 ## About The Project<a id='about'></a>
 
@@ -14,17 +13,17 @@ This is the second project for Udacity's advanced web nanodegree.
 **This project** is built with:
   1. <a href="https://www.typescriptlang.org/">TypeScript</a>
   2. <a href="https://nodejs.org/en/">NodeJS</a>
-  3. <a href="">Express</a>
+  3. <a href="http://expressjs.com/">Express</a>
   4. <a href="https://www.npmjs.com/package/bcrypt">Bcrypt</a>
-  5. <a href="">Jasmine</a>
-  6. <a href="">Supertest</a>
-  7. <a href="">Eslint</a>
-  8. <a href="">Prettier</a>
-  9. <a href="">Nodemon</a>
-  10. <a href="">PostgreSQL</a>
-  11. <a href="">db-migrate</a>
-  12. <a href="">Dotenv</a>
-  13. <a href="">Jsonwebtoken</a>
+  5. <a href="https://www.npmjs.com/package/jasmine">Jasmine</a>
+  6. <a href="https://www.npmjs.com/package/supertest">Supertest</a>
+  7. <a href="https://eslint.org/">Eslint</a>
+  8. <a href="https://prettier.io/">Prettier</a>
+  9. <a href="https://www.npmjs.com/package/nodemon">Nodemon</a>
+  10. <a href="https://www.postgresql.org/">PostgreSQL</a>
+  11. <a href="https://www.npmjs.com/package/db-migrate">db-migrate</a>
+  12. <a href="https://www.npmjs.com/package/dotenv">Dotenv</a>
+  13. <a href="https://www.npmjs.com/package/jsonwebtoken">Jsonwebtoken</a>
 
   
   ## Scripts<a id='scripts'></a>
@@ -38,18 +37,21 @@ This is the second project for Udacity's advanced web nanodegree.
 ## Usage <a id='usage'></a>
 First of all add a `.env` File in the root directory and set the missing parameters
 
-`POSTGRES_HOST = 127.0.0.1
+```
+POSTGRES_HOST = 127.0.0.1
 POSTGRES_DB = store_front_backend
 POSTGRES_TEST_DB = store_front_backend_test
 POSTGRES_USER = ?????
 POSTGRES_PASSWORD = ?????
 NODE_ENV = dev
 SALT_ROUNDS = 10
-TOKEN_PRIVATE_KEY = x@AxcvS5569@gafd$`
+TOKEN_PRIVATE_KEY = x@AxcvS5569@gafd$
+```
 
-then add a database.json file in the root directory and set the missing paramters
+Then add a database.json file in the root directory and set the missing paramters
 
-`{
+```
+{
     "dev": {
       "driver": "pg",
       "host": "127.0.0.1",
@@ -64,6 +66,6 @@ then add a database.json file in the root directory and set the missing paramter
         "user": "?????",
         "password": "?????"
       }
-  }`
-
-- To start the server at http://127.0.0.1:3000: `npm run start`
+  }
+```
+To start the server at http://127.0.0.1:3000: `npm run start`
