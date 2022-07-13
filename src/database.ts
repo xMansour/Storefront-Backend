@@ -29,6 +29,6 @@ if (NODE_ENV === 'dev') {
     password: POSTGRES_PASSWORD
   });
 }
-console.log("NODE_ENV: " + NODE_ENV);
+console.log('NODE_ENV: ' + NODE_ENV);
 
 export default client;

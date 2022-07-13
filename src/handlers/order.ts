@@ -44,6 +44,10 @@ const addProduct = async (req: express.Request, res: express.Response) => {
 orderRouter.get('/orders', verifyAuthToken, index);
 orderRouter.get('/orders/:userId', verifyAuthToken, show);
 orderRouter.post('/orders/:userId', verifyAuthToken, create);
-orderRouter.post('/orders/:orderId/products/:productId', verifyAuthToken, addProduct);
+orderRouter.post(
+  '/orders/:orderId/products/:productId',
+  verifyAuthToken,
+  addProduct
+);
 
 export default orderRouter;
