@@ -22,18 +22,42 @@ describe('Product Model Spec', () => {
   });
 
   it('create method should add a product', async () => {
-    const result = await store.create(product);
-    expect(result.name).toBe(product.name);
-    expect(result.price).toBe(product.price);
-    expect(result.category).toBe(product.category);
+    try {
+      const result = await store.create(product);
+      expect(result.name).toBe(product.name);
+      expect(result.price).toBe(product.price);
+      expect(result.category).toBe(product.category);
+    } catch (error) {
+      throw new Error('create method error: ' + error);
+    }
   });
 
   it('show method should return the correct product', async () => {
-    const createdProduct = await store.create(product);
-    //@ts-ignore
-    const result = await store.show(createdProduct.id);
-    expect(result.name).toBe(product.name);
-    expect(result.price).toBe(product.price);
-    expect(result.category).toBe(product.category);
+    try {
+      const createdProduct = await store.create(product);
+      //@ts-ignore
+      const result = await store.show(createdProduct.id);
+      expect(result.name).toBe(product.name);
+      expect(result.price).toBe(product.price);
+      expect(result.category).toBe(product.category);
+    } catch (error) {
+      throw new Error('show method error: ' + error);
+    }
+  });
+
+  it('index method should return all products', async () => {
+    const product: Product = {
+      name: 'Legion Laptop',
+      price: 800,
+      category: 'Laptop'
+    };
+    try {
+      await store.create(product);
+      const products = await store.index();
+      //@ts-ignore
+      expect(products.length).toBeGreaterThan(0);
+    } catch (error) {
+      throw new Error('index method error: ' + error);
+    }
   });
 });

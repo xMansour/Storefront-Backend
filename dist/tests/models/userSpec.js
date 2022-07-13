@@ -33,19 +33,54 @@ describe('User Model Spec', () => {
     it('Should have a delete method', () => {
         expect(store.delete).toBeDefined();
     });
+    it('index method should return all users', () => __awaiter(void 0, void 0, void 0, function* () {
+        yield store.create(user);
+        const users = yield store.index();
+        yield store.delete(user.userName, user.password);
+        //@ts-ignore
+        expect(users.length).toBeGreaterThan(0);
+    }));
     it('create method should add a user', () => __awaiter(void 0, void 0, void 0, function* () {
-        const result = yield store.create(user);
-        //@ts-ignore
-        expect(result.first_name).toBe(user.firstName);
-        //@ts-ignore
-        expect(result.last_name).toBe(user.lastName);
-        //@ts-ignore
-        expect(result.user_name).toBe(user.userName);
+        try {
+            const result = yield store.create(user);
+            yield store.delete(user.userName, user.password);
+            //@ts-ignore
+            expect(result.first_name).toBe(user.firstName);
+            //@ts-ignore
+            expect(result.last_name).toBe(user.lastName);
+            //@ts-ignore
+            expect(result.user_name).toBe(user.userName);
+        }
+        catch (error) {
+            throw new Error('create method error: ' + error);
+        }
     }));
     it('delete method should remove the user', () => __awaiter(void 0, void 0, void 0, function* () {
-        yield store.delete(user.userName, user.password);
-        const result = yield store.index();
-        //@ts-ignore
-        expect(result).toEqual([]);
+        try {
+            yield store.create(user);
+            yield store.delete(user.userName, user.password);
+            const result = yield store.index();
+            //@ts-ignore
+            expect(result).toEqual([]);
+        }
+        catch (error) {
+            throw new Error('delete method error: ' + error);
+        }
+    }));
+    it('authenticate method should return the user', () => __awaiter(void 0, void 0, void 0, function* () {
+        try {
+            yield store.create(user);
+            const result = yield store.authenticate(user.userName, user.password);
+            //@ts-ignore
+            expect(result.first_name).toBe(user.firstName);
+            //@ts-ignore
+            expect(result.last_name).toBe(user.lastName);
+            //@ts-ignore
+            expect(result.user_name).toBe(user.userName);
+            yield store.delete(user.userName, user.password);
+        }
+        catch (error) {
+            throw new Error('authenticate method error: ' + error);
+        }
     }));
 });
